@@ -1,9 +1,14 @@
 name: workflow_triggered
-on: [repository_dispatch]
+on:
+  repository_dispatch:
+    types: [update-submodules]
 jobs:
-  cypress-run:
+  updateSubmodules:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
-      - run: echo "Triggering Wokflow Trigger"
       - name: Checkout
         uses: actions/checkout@v3
+      - run: echo "Triggering Wokflow Trigger"
