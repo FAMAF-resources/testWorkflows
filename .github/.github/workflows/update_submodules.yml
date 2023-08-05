@@ -3,10 +3,16 @@ on:
   schedule:
     - cron:  '0 * * * *'
   repository_dispatch:
-    types: famaftestupdate
+    types: update
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - dev
 
 jobs:
-  famaftestupdate:
+  update_submodules:
     name: Update submodules
     runs-on: ubuntu-latest
     steps:
